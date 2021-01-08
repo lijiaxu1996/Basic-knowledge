@@ -1,0 +1,4 @@
+{
+    "presets": ["es2015", "latest"], //声明2015 es6
+    "plugins": []
+}
