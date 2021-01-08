@@ -25,6 +25,23 @@ let joinFamily = animal => {
 }
 joinFamily(dog);
 joinFamily(cat);
+
+//如果一种方法和功能应用到不同的对象身上这样就形成了多态
+let Dog = function () {}
+Dog.prototype.sound = function() {
+    console.log('汪汪汪')
+}
+let Cat = function () {}
+Cat.prototype.sound = function () {
+    console.log('喵喵喵')
+}
+let addSound = function(animal){
+    animal.sound();
+};
+addSound(new Dog())
+addSound(new Cat())
+
+
 ```
 
 
