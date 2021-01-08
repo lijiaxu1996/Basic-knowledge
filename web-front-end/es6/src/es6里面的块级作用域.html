@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //es5里面的var的问题
+        //内部的变量覆盖外部的变量
+        /*var t = Math.random();
+        alert(t);
+        function fn(){
+            alert(t); //undefined
+           
+            var t='new value'
+
+            alert(t)//new value
+            t='new value1'
+            alert(t)//new value
+        }
+        fn()
+        window.onload=function(){
+            var oBtn=document.getElementsByTagName('input')
+            for(var i=0;i<oBtn.length;i++){
+                oBtn[i].onclick=function(){
+                    alert(i) //全是弹出3,var声明时,i是一个全局变量,当i跳出循环只能是3
+                }
+            }
+        }
+        window.onload=function(){
+            var oBtn=document.getElementsByTagName('input')
+            for(let i=0;i<oBtn.length;i++){
+                oBtn[i].onclick=function(){
+                    alert(i) //全是弹出0 1 2,let声明时,i是一个局部变量,当i在for的块级作用域里面有三个局部变量
+                }
+            }
+        }*/
+        //闭包解决
+        window.onload = function () {
+            var oBtn = document.getElementsByTagName('input')
+            for (var i = 0; i < oBtn.length; i++) {
+                oBtn[i].onclick = (function (i) {
+                    return function () {
+                        console.log(i)
+                    }
+                })(i)
+            }
+        }
+    </script>
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+</body>
+
+</html>
