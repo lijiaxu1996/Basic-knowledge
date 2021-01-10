@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        Promise.all([
+            $.ajax({url:'./lib/user.json',dataType:'json'}),
+            $.ajax({url:'./lib/food.json',dataType:'json'}),
+        ]).then(([user,food])=>{
+            console.log(user,food)
+        },e=>{console.log(e)}) //Object { id: 0, name: "jesse", age: 25 }  
+        //Object { id: 0, name: "apple", price: 23.4 }
+    </script>
+</body>
+</html>

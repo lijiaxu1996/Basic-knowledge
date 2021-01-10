@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        let p=new Promise(function(resolve,reject){
+            $.ajax({
+                url:'./lib/user.json',
+                dataType:'json',
+                success(data){
+                    resolve(data);
+                },
+                error(e){
+                    reject(e);
+                }
+            })
+        });
+        p.then((d)=>{console.log(`成功了`,d)},(e)=>{console.log('失败了',e)})
+    </script>
+</body>
+</html>

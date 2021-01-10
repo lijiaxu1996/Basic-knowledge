@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url:'./lib/user.json',
+            dataType:'json',
+            success(user){
+                //获取当前数据之后获取第二个数据
+                $.ajax({
+                    url:'./lib/food.json',
+                    dataType:'json',
+                    success(food){
+                        console.log(user,food)
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>

@@ -25,10 +25,11 @@
 // let {other:{pos}}=stu;
 // console.log(pos.x)
 //默认值
-let animal={
-    type:'dog',
-    nums:444,
-}
-let {type,nums,flag=true}=animal
-console.log(type,nums,flag)//指定flag为默认true
-
+// let animal={
+//     type:'dog',
+//     nums:444,
+// }
+// let {type,nums,flag=true}=animal
+// console.log(type,nums,flag)//指定flag为默认true
+// let {a,b}={e:1,f:2,h:3}
+// console.log(a,b)
