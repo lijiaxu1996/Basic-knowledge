@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <script>
+        //let oInputs=document.getElementsByTagName('input');
+        //Array.from(oInputs).forEach(item=>console.log(item)) //伪数组转化为真的数组
+     // let a=  [-1,0,1].find((n) => n > 0) // 1 返回一个回调函数
+      //console.log(a)
+        let ans=[1,2,3,4];
+       let pos= ans.findIndex((v,i,json)=>{
+            return v>3;
+        })
+        console.log(pos)//返回这个位置
+        console.log([1,2,3].includes(2)) //true
+        console.log([NaN].indexOf(NaN)) // -1
+       console.log( [NaN].includes(NaN) )// true
+        let arr = Array.of(1, 2,6); //将数字变成数组
+        console.log(arr.length); // 3
+        console.log(arr[0]); // 1
+        console.log(arr[1]); // 2 
+        console.log(arr[2]);//3
+        //entries()，keys() 和 values()
+        //分别查看对象本身的键值对 键 和值
+        for(let index of [1,2].keys()){
+            console.log(index)
+        }
+        for(let v of [1,2].values()){
+            console.log(v)
+        }
+        for(let [i,v]of [1,2].entries()){
+            console.log(i,v)
+        }
+    </script>
+</body>
+</html>
