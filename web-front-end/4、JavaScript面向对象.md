@@ -1,6 +1,6 @@
-## JavaScript核心知识点
+## JavaScript面向对象
 
-### 1、深刻理解JavaScript里面的面向对象
+### 1、理解JavaScript里面的多态
 
 ```javascript
 //我们只需要关注对象的行为，而不需要去关注对象本身
@@ -40,7 +40,4 @@ let addSound = function(animal){
 };
 addSound(new Dog())
 addSound(new Cat())
-
-
 ```
-
