@@ -51,3 +51,4 @@ var addTwoNumbers = function(l1, l2) {
     }
      
 };
+console.log(addTwoNumbers([9,4,4,5,6,7,8,5,6,7,8,4],[3,4,5,6,7,8]));
