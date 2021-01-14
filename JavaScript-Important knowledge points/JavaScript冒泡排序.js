@@ -1,5 +1,3 @@
-let bubbleSortArray=[];
-let bubbleSortNum;
 function bubbleSort(bubbleSortArray,bubbleSortNum){
     let sw=0;//表示冒泡排序交换的次数
     let flag=true;//flag表示的是稳定性，保证交换前后次序不变

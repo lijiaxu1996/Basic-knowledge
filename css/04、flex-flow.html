@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .parent{
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            display: flex;
+            flex-flow: column wrap; /*两种位置互换都可以*/
+        }
+        .parent>div{
+            /*默认水平row排列*/
+            width: 60px;
+            height: 60px;
+            background-color: deeppink;
+            color: aliceblue;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- flex-flow 就是flex-direction和flex-wrap的合并 -->
+    <div class="parent">
+        <div>1111111111111111</div>
+        <div>2111111111111111</div>
+        <div>3111111111111111</div>
+        <div>4111111111111111</div>
+        <div>1111111111111111</div>
+        <div>2111111111111111</div>
+        <div>3111111111111111</div>
+        <div>4111111111111111</div>
+    
+    </div>
+</body>
+</html>
