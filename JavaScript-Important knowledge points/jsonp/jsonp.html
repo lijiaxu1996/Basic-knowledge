@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //学习jsonp就是结合promise方法进行学习
+
+    function myjsonp({url,params,cb}){
+      //pending resolved rejected
+        return new Promise((resolve,reject) => {
+          //创建一个script标签
+          let myscript = document.createElement('script');
+
+          //用window全局访问回调函数
+          window[cb] = function(res) {
+              resolve(res);
+              document.body.removeChild(myscript);
+          }
+
+          //传入的参数进行拼接
+          params = {  ...params,  cb};
+          console.log(params)
+          let strArr = [];
+
+          for(let key in params){
+              strArr.push(`${key}=${params[key]}`);
+          }
+
+          myscript.src=`${url}?${strArr.join('&')}`;
+
+          document.body.appendChild(myscript)
+        })
+    }
+    myjsonp({
+      url:'http://192.168.137.137:3000/user',
+      params:{user:'xuhuacode',age:'24'},
+      cb:'show'
+    }).then(res => {
+      alert(res);
+    })
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,6 +1,4 @@
 //插入排序JavaScript实现
-let insertSortArray = [];
-let insertSortNum;
 function show(insertSortArray, insertSortNum) {
     let str="";
     for (let i = 0; i < insertSortNum; i++) {
