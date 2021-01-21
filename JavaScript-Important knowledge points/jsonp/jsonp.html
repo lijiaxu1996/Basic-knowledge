@@ -7,47 +7,47 @@
 </head>
 <body>
   <script>
-    //学习jsonp就是结合promise方法进行学习
+    //自己写一个myjsonp和promise对象的封装
+    let myjsonp = function ({url,parmas,cb}){
 
-    function myjsonp({url,params,cb}){
-      //pending resolved rejected
         return new Promise((resolve,reject) => {
-          //创建一个script标签
-          let myscript = document.createElement('script');
+            //dom创建一个标签
+            let myscript = document.createElement('script');
 
-          //用window全局访问回调函数
-          window[cb] = function(res) {
-              resolve(res);
-              document.body.removeChild(myscript);
-          }
+            //返回cb,cb是一个全局属性
 
-          //传入的参数进行拼接
-          params = {  ...params,  cb};
-          console.log(params)
-          let strArr = [];
+            window[cb] = res => {
+                resolve(res); 
 
-          for(let key in params){
-              strArr.push(`${key}=${params[key]}`);
-          }
+                document.body.removeChild(myscript);
 
-          myscript.src=`${url}?${strArr.join('&')}`;
+                delete window[cb];
 
-          document.body.appendChild(myscript)
+            }
+
+            //对字符串进行拼接
+            parmas = {...parmas,cb};
+
+            let strArr = [];
+
+            for(let key in parmas){
+              strArr.push(`${key}=${parmas[key]}`);
+            }
+
+            myscript.src = `${url}?${strArr.join('&')}`;
+
+            document.body.appendChild(myscript);
+
         })
+
     }
     myjsonp({
       url:'http://192.168.137.137:3000/user',
-      params:{user:'xuhuacode',age:'24'},
+      parmas:{name:'xuhuacode',age:'25'},
       cb:'show'
     }).then(res => {
-      alert(res);
+      alert(`age 是 ${res} 岁`)
     })
-
-
-
-
-
-
 
 
   </script>

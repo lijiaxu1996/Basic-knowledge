@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{name}}
+    </div>
+    <!-- 这是view -->
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        //vue实例就是 vm
+        let vue = new Vue({
+            el: '#app',
+            //data就是model
+            data() {
+                return {
+                    name:'jesse'
+                }
+            },
+        })
+    </script>
+    <!-- 核心就是数据驱动视图进行改变，数据交给 vm vm改变视图 -->
+</body>
+</html>

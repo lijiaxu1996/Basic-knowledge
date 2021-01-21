@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 添加v-once 只是修改一次 -->
+        <p v-once> 原始数据:  {{name}}</p> 
+        <p> 当前数据:  {{name}}</p>
+      
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse'
+                }
+            },
+        })
+    </script>
+</body>
+</html>
