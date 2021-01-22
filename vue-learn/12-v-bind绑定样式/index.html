@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{name}} -->
+        <!-- 传统写样式的方法 -->
+        <!-- <div style="color:blueviolet">我是div</div> -->
+        <!-- 使用v-bind进行绑定，写成对象形式值一定要加上引号 -->
+        <!-- <div :style="{color:'blueviolet'}">我是div</div>
+         -->
+         <!-- 可以绑定多个样式,用数组把对象传入进去就可以 -->
+         <div :style='[obj,obj1]'>我是div</div>
+
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse',
+                    obj:{
+                        "color": "blue",
+                    },
+                    obj1:{
+                        "font-size":"80px"
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>

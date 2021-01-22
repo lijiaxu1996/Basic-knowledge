@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{name}} -->
+        <!-- v-on触发点击事件，注意，在原生js里面事件名前面的on可以忽略不写，而触发函数必须写上函数名，
+        并且在vue实例里面加上一个methods方法  并且可以简写@-->
+        <button type="submit" @click='go'>俺是一个按钮</button>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse'
+                }
+            },
+            methods: {
+                go(){
+                    window.open('http://github.com')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

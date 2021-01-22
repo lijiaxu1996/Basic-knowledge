@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .size{
+            font-size: 81px;
+        }
+        .color{
+            color: blueviolet;
+        }
+        .bgc{
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 默认类名这样添加 -->
+        <!-- <p class="size color bgc">测试一些东西</p> -->
+        <!-- 使用v-bind对属性进行添加,样式不会发生改变 -->
+        <!-- <p :class="size">测试一些东西</p> -->
+        <!-- 使用bind指令,并把类名传入到字符串数组形式 样式才会发生改变 -->
+        <!-- <p :class="['size','color','bgc']">测试一些东西</p> -->
+        <!-- 可以使用三目运算符进行判别 -->
+        <!-- <p :class="['size','color',flag?'bgc':'']">测试一些东西</p>
+         -->
+         <!-- 可以传入一个对象进行绑定数据 -->
+         <p :class="obj">测试一些东西</p>
+
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse',
+                    flag:false,
+                    obj:{
+                        size:true,
+                        color:true,
+                        bgc:false
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
