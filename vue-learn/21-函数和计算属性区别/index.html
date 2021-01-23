@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{name}} -->
+        <!-- 插值表达式里面除了可以放变量名之外，也可以放函数表达式 -->
+        <!-- 计算属性仅仅是一个属性，并不是函数，切记 切记 -->
+        {{['1','2','3'].includes('3')}}
+        <!-- 函数会多次执行，就算执行结果一致，也会继续执行 -->
+        <!-- {{isthree1()}}
+        {{isthree1()}}
+        {{isthree1()}} -->
+        <!-- 计算属性只要计算结果一样，结果被缓存起来，之后就只是执行一次 -->
+        <!-- 
+            在数据量不发生改变或者发生改变很小的时候推荐使用计算属性，
+            而数据经常发生改变这时候需要很好地使用函数进行计算
+         -->
+        {{isthree}}
+        {{isthree}}
+        {{isthree}}
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse'
+                }
+            },
+            methods: {
+                isthree1: () => {
+                    console.log('函数执行了')
+                    return ['1','2','3'].includes('3')
+                }
+            },
+            computed: {
+                isthree: ()=>{
+                    console.log('计算属性执行了')
+                  return ['1','2','3'].includes('3')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
