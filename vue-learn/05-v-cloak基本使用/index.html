@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-cloak 是为了解决网络加载慢的情况，数据没有及时渲染导致的用户体验不好 
+        
+        需要配合 css的[v-cloak] {display:none}
+        
+        -->
+        <p v-cloak > 原始数据:  {{name}}</p> 
+      
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

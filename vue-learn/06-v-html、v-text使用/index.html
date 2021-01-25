@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <!-- 插值方式不会解析html -->
+        <p>{{name}}</p>
+        <p>{{msg}}</p>
+        <!-- v-html会解析html,默认也会解析不带html标签的文本 -->
+        <p v-html="msg"></p>
+        <p v-html="name"></p>
+        <!-- v-text 不会解析html,和插值类似 -->
+
+        <p v-text="msg"></p>
+        <p v-text="name"></p>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse',
+                    msg:'<div>我是div</div>'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

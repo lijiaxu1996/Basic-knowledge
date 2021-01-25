@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{name}} -->
+        <!-- <div v-size="'red'">我是div</div> -->
+        <!-- 这里可以直接用obj.value进行传参 -->
+        <!-- 这里还可以把data里面定义的颜色传进去 -->
+        <div v-size="newcolor">我是div</div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.directive('size',{
+            //bind指的是刚绑定元素上
+            bind:function(el,obj){
+                el.style.color=obj.value
+            }
+        })
+
+        //全局指令必须在实例的前面
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse',
+                    newcolor:'pink'
+                }
+            },
+        })
+  
+    </script>
+</body>
+</html>

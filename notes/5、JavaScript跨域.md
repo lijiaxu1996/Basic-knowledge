@@ -47,9 +47,60 @@
 #### 3.2 使用jsonp跨域
 
 ```javascript
-/* 1. 使用get请求
-   2. 可以访问不同源的网站
-*/
-//创建一个express服务器
+ ```javascript
+  //代码实现
+  //服务端
+const express = require('express');
+  
+  const app = express();
+  
+  app.get('/user',(req,res) => {
+      let {name,age,cb} = req.query;
+      console.log(name,age);
+      res.send(`${cb}(${age})`);
+  })
+  app.listen(3000)
+  //客户端
+      //自己写一个myjsonp和promise对象的封装
+      let myjsonp = function ({url,parmas,cb}){
+  
+          return new Promise((resolve,reject) => {
+              //dom创建一个标签
+              let myscript = document.createElement('script');
+  
+              //返回cb,cb是一个全局属性
+  
+              window[cb] = res => {
+                  resolve(res); 
+  
+                  document.body.removeChild(myscript);
+  
+                  delete window[cb];
+  
+              }
+  
+              //对字符串进行拼接
+              parmas = {...parmas,cb};
+  
+              let strArr = [];
+  
+              for(let key in parmas){
+                strArr.push(`${key}=${parmas[key]}`);
+              }
+  
+              myscript.src = `${url}?${strArr.join('&')}`;
+  
+              document.body.appendChild(myscript);
+  
+          })
+  
+      }
+      myjsonp({
+        url:'http://192.168.137.137:3000/user',
+        parmas:{name:'xuhuacode',age:'25'},
+        cb:'show'
+      }).then(res => {
+        alert(`age 是 ${res} 岁`)
+      })
 ```
 

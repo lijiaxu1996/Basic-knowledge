@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{name}}
+        <ul>
+            <!-- <li v-for='(value,index) in list'>{{index}}->{{value}}</li> -->
+            <!-- 遍历数字 -->
+            <!-- <li v-for='(value,index) in 100'>{{index}}->{{value}}</li>
+             -->
+             <!-- 遍历对象 -->
+             <!-- <li v-for='(value,key) in obj'>{{key}}->{{value}}</li> -->
+             <!-- 遍历字符串 -->
+             <li v-for="(value,key) in 'jesse'"::key="key">{{key}}->{{value}}</li>
+        </ul>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse',
+                    list:['凯','花木兰','兰陵王','墨子'],
+                    obj:{
+                        name:'jesse',
+                        age:25,
+                        like:'coding'
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
