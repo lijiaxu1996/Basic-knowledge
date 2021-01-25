@@ -20,3 +20,8 @@ let transBase = (number,base) => {
 let number=8,base=2;
 let ans = transBase(number ,base);
 console.log(ans);//1000
+
+let ToDoListPlus = () => {
+    console.log('ToDoListPlus')
+}
+ToDoListPlus()
