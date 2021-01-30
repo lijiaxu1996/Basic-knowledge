@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{time | dateFormat("yyyy-MM-dd") }}
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        //过滤器也可以添加参数
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    time:Date.now()
+                }
+            },
+            filters:{
+              'dateFormat': (val,param) => {
+                  console.log(param)
+                  let date =new Date(val)
+                  let year = date.getFullYear()+"";
+                  let month= date.getMonth()+1+"";
+                  let day = date.getDate()+"";
+                  let hour = date.getHours()+"";
+                  let minute = date.getMinutes()+"";
+                  let second = date.getSeconds()+""
+                  if(param && param === "yyyy-MM-dd")
+                  {
+                      return `${year.padStart(2,"0")}-${month.padStart(2,"0")}-${day.padStart(2,"0")}`;
+                  }
+                  date = `${year.padStart(2,"0")}-${month.padStart(2,"0")}-${day.padStart(2,"0")} ${hour.padStart(2,"0")}:${minute.padStart(2,"0")}:${second.padStart(2,"0")}`;
+                  return date;
+              }
+            }
+        })
+    </script>
+</body>
+</html>

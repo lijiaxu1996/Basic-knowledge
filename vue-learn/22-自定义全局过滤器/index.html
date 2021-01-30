@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{name | f1 |f2}}
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        //定义一个全局的过滤器,只能在插值语法和v-bind属性里面使用
+        //可以使用多个过滤器
+        Vue.filter('f1',val => {
+            val= val.replace(/e/g,'o');
+            
+            console.log(val)
+            return val;
+        })
+        Vue.filter('f2',val => {
+            val = val.replace(/o/g,'k')
+            console.log(val);
+            return val;
+        })
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse hello echo'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

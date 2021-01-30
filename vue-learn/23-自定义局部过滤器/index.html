@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{name | f1}}
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        //自定义局部过滤器在vue实例里面进行添加
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name:'jesse hello echo'
+                }
+            },
+            filters:{
+                "f1": val => {
+                   val= val.replace(/e/g,'a');
+                    console.log(val);
+                    return val;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
