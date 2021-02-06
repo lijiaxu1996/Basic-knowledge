@@ -9,5 +9,10 @@ https://sourceforge.net/projects/git-osx-installer/
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 # 安装node环境
 https://my.oschina.net/guodapeng/blog/4333719
+# npm环境配置
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+npm config set registry https://registry.npm.taobao.org
+npm i -g yarn
+echo "PATH=$PATH:~/.yarn/bin" >> ~/.bash_profile && source .bash_profile
 ```
 
