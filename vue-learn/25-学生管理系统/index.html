@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #app{
+            width: 800px;
+            margin: 50px auto;
+            background-color: hsl(0, 9%, 87%);
+        }
+        table{
+            width: 100%;
+            background: #000;
+        }
+        table tr {
+            background: #fff;
+        }
+        form {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 添加新增和查询输入框 -->
+        <form v-show="isShow">
+        <input type="text" placeholder="请输入学号" v-model="person.id">
+        <input type="text" placeholder="请输入姓名" v-model="person.name">
+        <input type="text" placeholder="请输入成绩" v-model="person.grade">
+        <input type="submit" value="新增" @click.prevent="add">
+        <input type="submit" value="查询" @click.prevent="find">
+        </form>
+        <table>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>成绩</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for = "(person,index) in persons ">
+                <!-- <td><input type="text" :value="person.id" :disabled="isDisabled"></td>
+                <td><input type="text" :value="person.name":disabled="isDisabled"></td>
+                <td><input type="text" :value="person.grade":disabled="isDisabled"></td>
+                <td><input type="text" :value="person.time | dateFormat()":disabled="isDisabled"></td> -->
+                <td><input type="text" v-model="person.id" :disabled="isDisabled"></td>
+                <td><input type="text" v-model="person.name":disabled="isDisabled"></td>
+                <td><input type="text" v-model="person.grade":disabled="isDisabled"></td>
+                <td><input type="text" :value="person.time | dateFormat()"disabled></td>
+                <td>
+                    <!-- 添加禁用默认事件 -->
+                    <a href="#" @click.prevent="edit">编辑</a>
+                    <a href="#"@click.prevent='del(index)'>删除</a>
+                    <br>
+                    <a href="#" @click.prevent="toggle">更多操作</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    isDisabled:true,
+                    isShow:false,
+                    //添加对应的人
+                    persons:[{
+                        id:1,
+                        name:'jesse',
+                        grade:'99',
+                        time:Date.now()
+                    },{
+                        id:2,
+                        name:'jesse1',
+                        grade:'88',
+                        time:Date.now()
+                    },{
+                        id:3,
+                        name:'jesse2',
+                        grade:'88',
+                        time:Date.now()
+                    }],
+                    person:{
+                        id:'',
+                        name:'',
+                        grade:''
+                    }
+                }
+            },
+            methods: {
+                edit(){
+                    this.isDisabled = !this.isDisabled;
+                },
+                toggle(){
+                    this.isShow = !this.isShow;
+                },
+                del(index){
+                    this.persons.splice(index,1); 
+                },
+                add(){
+                    this.person.time = Date.now()
+                    this.persons.push(this.person);
+                    this.person={
+                        id:'',
+                        name:'',
+                        grade:''
+                    }
+                },
+                find(){
+                    let newPersons = this.persons.filter(person => {
+                        if(person.grade === this.person.grade){
+                            return true;
+                        }
+                    })
+                    this.persons = newPersons;      
+                }
+            },
+            filters:{
+              'dateFormat': (val) => {
+                  let date =new Date(val)
+                  let year = date.getFullYear()+"";
+                  let month= date.getMonth()+1+"";
+                  let day = date.getDate()+"";
+                  let hour = date.getHours()+"";
+                  let minute = date.getMinutes()+"";
+                  let second = date.getSeconds()+""
+                  date = `${year.padStart(2,"0")}-${month.padStart(2,"0")}-${day.padStart(2,"0")} ${hour.padStart(2,"0")}:${minute.padStart(2,"0")}:${second.padStart(2,"0")}`;
+                  return date;
+              }
+            }
+                
+        })
+    </script>
+</body>
+</html>
