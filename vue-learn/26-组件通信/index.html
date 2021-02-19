@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .bx{
+            width: 100%;
+            height: 600px;
+            background-color:blueviolet;
+            position: relative;
+        }
+        .nav{
+            width: 100%;
+            /* height: 100px; */
+            background-color: yellow;
+            position: fixed;
+        }
+        .bar{
+            position: absolute;
+            left: 0;
+            top: 60px;
+            width: 20%;
+            height: 200px;
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div>
+        我是导航组件
+    </div> -->
+    <div id="app">
+        <!-- 这是Vue根部组件 -->
+        <App class="bx">
+        </App>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        //编写全局组件
+        Vue.component('Btn',{
+            data(){
+                return {
+
+                }
+            },
+            template:`
+             <button>我是按钮</button>
+           
+            `
+   
+        })
+          //确定导航组件
+          let Nav = {
+            template:`
+            <div>
+            我是导航组件
+            <Btn/>
+            {{childData}}
+            <input type='text' v-model = 'childData' @input = 'InputChange(childData)'/>
+            </div>
+            `
+            ,
+            props:['childData'],
+            methods:{
+                InputChange(val){
+                    this.$emit('InputHander',val);
+                }
+            }
+        }
+        let SiderBar = {
+            template:`
+            <div>
+            我是侧边栏组件
+           
+        
+            </div>
+            
+            `
+           
+        }
+        //确定版心组件 App
+        let App = {
+            data(){
+                return {
+                    msg:'我是版心啊啊啊'
+                }
+            },
+            template:`
+                <div>
+                    <Nav class="nav":childData='msg'@InputHander='InputHander'/>
+                    <SiderBar class="bar"/>
+                我是版心组件 
+                </div>
+            `,
+            components:{
+                Nav,
+                SiderBar,
+            },
+          methods:{
+            InputHander(val){
+                console.log(val);
+            }
+          }
+        }
+      
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+
+                }    
+            },
+            //声明一个局部组件
+            components:{
+                App,
+                Nav
+            },
+            // template:`<App/>`
+            
+        })
+    </script>
+</body>
+</html>
