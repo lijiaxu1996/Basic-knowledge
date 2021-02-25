@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rem Learn</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style type="text/css">
+        /* *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            /* width: 2rem;
+            height: 2rem;
+            background: blue;
+            text-align: center;
+            line-height: 2rem; */
+            
+        }
+    </style> */ -->
+</head>
+<body>
+    <!-- rem适配原理
+    rem是指相对于根元素的字体大小(font-size)的单位，根标签的font-size=1rem
+    改变了一个元素在不同设备上占据的css像素的个数
+    -->
+    <div id="app">app</div>
+    <script>
+        (function(){
+            var styleNode = document.createElement("style");
+            /* 当不除以16时此时1em便占据视口宽度,
+            那么我们给其页面中的元素设置宽高基本都会小于1rem,浏览器的计算并不会特别精准容易出现偏差 */
+            // var w = document.documentElement.clientWidth;
+            /* 所以此时我们除以16,使得16rem便占据了满屏,对于页面中大多数元素的rem都会超过1rem */
+            var w = document.documentElement.clientWidth/16;//获取视口大小
+            /* 设置此时根元素的fontsize，向html的style样式中添加font-size属性*/
+            styleNode.innerHTML = "html{font-size:"+w+"px!important}";
+            //向head标签中添加style标签，其中包含html{font-size:w;}
+            document.head.appendChild(styleNode);
+        })()
+    </script>
+</body>
+</html>
