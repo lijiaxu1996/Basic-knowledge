@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        参考:https://my.oschina.net/u/3623645/blog/4450136
+        移动端web开发中，UI设计稿中设置边框为1像素，前端在开发过程中如果出现border:1px，
+        测试会发现在retina屏机型中，1px会比较粗，即是较经典的移动端1px像素问题.
+        设备像素比：dpr=window.devicePixelRatio，也就是设备的物理像素与逻辑像素的比值
+        在retina屏的手机上, dpr为2或3，css里写的1px宽度映射到物理像素上就有2px或3px宽度。
+        例如：iPhone6的dpr为2，物理像素是750（x轴）,它的逻辑像素为375。也就是说，1个逻辑像素，在x轴和y轴方向，
+        需要2个物理像素来显示，即：dpr=2时，表示1个CSS像素由4个物理像素点组成
+     -->
+     <!-- 解决办法一： viewport + rem -->
+     <code>
+        <meta name="viewport" content="width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+        <meta name="viewport" content="width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no">
+     </code>
+</body>
+</html>
