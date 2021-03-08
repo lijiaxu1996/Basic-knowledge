@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;list-style: none; box-sizing: border-box;}
+        .div1{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin-bottom: 20px;
+        }
+        .div2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin-top: 20px;
+        }
+        .bfc{
+            /* display: flex; */
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="bfc"><div class="div1"></div></div>
+    <div class="bfc"><div class="div2"></div></div>
+</body>
+</html>
